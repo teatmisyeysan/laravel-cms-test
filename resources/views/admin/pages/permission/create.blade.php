@@ -1,7 +1,8 @@
 @extends('admin.layout.adminLayout')
 @section('title','Create permission')
 @section('style')
-
+    {{-- selec2 cdn --}}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -73,6 +74,7 @@
     </div>
 @endsection
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(function () {
             $("#example1").DataTable({
@@ -89,5 +91,13 @@
                 "responsive": true,
             });
         });
+        $(document).ready(function() {
+        // Select2 Multiple
+        $('.select2-multiple').select2({
+            placeholder: "Select",
+            allowClear: true
+        });
+
+    });
     </script>
 @endsection

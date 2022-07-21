@@ -69,7 +69,7 @@
                                             <th>Thumbnail</th>
                                             <td>
                                                 <img src="{{ asset('storage/slider/' . $slider->thumbnail) }}" width="350"
-                                                     height="140">
+                                                     height="240">
                                             </td>
                                         </tr>
                                     </tbody>

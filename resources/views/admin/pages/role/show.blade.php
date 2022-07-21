@@ -58,6 +58,16 @@
                                             <td>{{ $role->slug }}</td>
                                         </tr>
                                         <tr>
+                                            <th>
+                                                Permission
+                                            </th>
+                                            <td>
+                                                @foreach($role->permissions as $id => $roles)
+                                                    <span class="badge badge-info">{{ $roles->slug }}</span>
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <th>Create at</th>
                                             <td>{{ $role->created_at }}</td>
                                         </tr>
