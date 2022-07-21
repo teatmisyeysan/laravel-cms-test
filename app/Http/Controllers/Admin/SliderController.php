@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
 class SliderController extends Controller
@@ -12,26 +12,26 @@ class SliderController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-//        $this->authorize('view', Slider::class);
+        // $this->authorize('view', Slider::class);
 
         $slider = Slider::orderBy('id', 'desc')->get();
 
-        return view('admin.pages.slider.index', [
-            'slider' => $slider]);
+         return view('admin.pages.slider.index', [
+        'slider' => $slider]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-//        $this->authorize('create', Slider::class);
+        // $this->authorize('create', Slider::class);
 
         $Sliders = Slider::orderBy('id', 'desc')->get();
         return view('admin.pages.slider.create',['Sliders' => $Sliders]);
@@ -41,7 +41,7 @@ class SliderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -50,7 +50,6 @@ class SliderController extends Controller
         $Slider->subtitle = $request->input('subtitle');
         $Slider->description = $request->input('description');
         $Slider->link = $request->input('link');
-
         // image
         if($request->hasfile('thumbnail'))
         {
@@ -70,7 +69,7 @@ class SliderController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -83,7 +82,7 @@ class SliderController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
@@ -95,10 +94,10 @@ class SliderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, $id)
     {
         $Slider = Slider::find($id);
         $Slider->title = $request->input('title');
@@ -120,14 +119,14 @@ class SliderController extends Controller
             $Slider->thumbnail = $filename;
         }
         $Slider->update();
-        return redirect()->route('slider.index')->with(['message' => 'Slider Update successfully!', 'status' => 'success']);
+         return redirect()->route('slider.index')->with(['message' => 'Slider Update successfully!', 'status' => 'success']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
@@ -141,5 +140,4 @@ class SliderController extends Controller
         $Slider->delete();
         return redirect()->route('slider.index')->with('message','Slider Has Been Deleted Successfully');
     }
-
 }

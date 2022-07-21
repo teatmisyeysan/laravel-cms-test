@@ -31,7 +31,24 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success','logout succcess');
     }
 
-    public function register(){
-        return view('admin.auth.register');
-    }
+      /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    // public function post_resgister(array $data)
+    // {
+    //   return User::create([
+    //     'name' => $data['name'],
+    //     'email' => $data['email'],
+    //     'password' => Hash::make($data['password'])
+    //   ]);
+    // }
+
+
+    // public function register(){
+    //     return view('admin.auth.register');
+    // }
+
+
 }

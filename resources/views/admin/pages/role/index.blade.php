@@ -1,7 +1,9 @@
 @extends('admin.layout.adminLayout')
-@section('title','slider')
+@section('title','role')
 @section('style')
-
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -14,8 +16,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">DataTables</li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Role</li>
                         </ol>
                     </div>
                 </div>
@@ -28,15 +30,20 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="text-left mb-3">
-                            <a href="{{route('slider.create')}}" type="submit" class="btn btn-outline-success"><i class="fas fa-plus mr-1"></i>Create New</a>
+                            <a href="{{route('role.create')}}" type="submit" class="btn btn-outline-success"><i class="fas fa-plus mr-1"></i>Create New</a>
                         </div>
-                         <!--Alert message-->
-                         @if(session('message'))
-                         <div class="alert alert-success mb-sm-5 mt-sm-5">
-                             {{ session('message') }}
-                         </div>
-                         @endif
+                        @if(session('message'))
+                        <div class="alert alert-success mb-sm-5 mt-sm-5">
+                            {{ session('message') }}
+                        </div>
+                        @endif
+                        @if(session('delete'))
+                        <div class="alert alert-danger mb-sm-5 mt-sm-5">
+                            {{ session('delete') }}
+                        </div>
+                     @endif
                         <div class="card">
+
                             <div class="card-header">
                                 <h3 class="card-title">DataTable</h3>
                             </div>
@@ -46,30 +53,31 @@
                                     <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Title</th>
-                                        <th>Sub Title</th>
-                                        <th>Description</th>
-                                        <th>Thumbnail</th>
-                                        <th>Link</th>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Slug</th>
+                                        {{-- <th>Created at</th>
+                                        <th>Updated at</th> --}}
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($slider as $sl)
+                                    @foreach ($role as $rl)
                                         <tr>
-                                            <td>{{ $sl->id }}</td>
-                                            <td>{{ $sl->title }}</td>
-                                            <td>{{ $sl->subtitle }}</td>
-                                            <td>{{ \Str::limit($sl->description, 100) }}</td>
+                                            <td>{{ $rl->id }}</td>
+                                            <td>{{ $rl->name }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/slider/' . $sl->thumbnail) }}" width="50"
-                                                     height="40">
+                                                @foreach($rl->permissions as $key => $item)
+                                                    <span class="badge badge-info ">{{ $item->name }}</span>
+                                                @endforeach
                                             </td>
-                                            <td>{{ $sl->link }}</td>
+                                            <td>{{ $rl->slug }}</td>
+                                            {{-- <td>{{ $rl->created_at }}</td>
+                                            <td>{{ $rl->updated_at }}</td> --}}
                                             <td>
-                                                <form action="{{ route('slider.destroy',$sl->id) }}" method="Post">
-                                                    <a class="btn btn-outline-success" href="{{ route('slider.edit',$sl->id) }}"><i class="fas fa-edit"></i></a>
-                                                    <a class="btn btn-outline-info" href="{{ route('slider.show',$sl->id) }}"><i class="fas fa-eye"></i></a>
+                                                <form action="{{ route('role.destroy',$rl->id) }}" method="Post">
+                                                    <a class="btn btn-outline-success" href="{{ route('role.edit',$rl->id) }}"><i class="fas fa-edit"></i></a>
+                                                    <a class="btn btn-outline-info" href="{{ route('role.show',$rl->id) }}"><i class="fas fa-eye"></i></a>
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
@@ -114,4 +122,6 @@
             });
         });
     </script>
+    <!-- Select2 -->
+<script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
 @endsection

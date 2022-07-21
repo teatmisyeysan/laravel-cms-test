@@ -4,6 +4,9 @@
 //AdminController
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\auth\RegisterController;
+use App\Http\Controllers\Admin\auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\UserController;
 //FrontendController
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -31,15 +34,20 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class,'login'])->name('login');
     Route::post('/login', [AuthController::class,'postlogin'])->name('postlogin');
-    Route::post('/login', [AuthController::class,'postlogin'])->name('postlogin');
     Route::post('/logout', [AuthController::class,'logout'])->name('logout');
-    Route::get('/register', [AuthController::class,'register'])->name('register');
-//    Route::get('/',[AdminController::class,'index'])->name('dashboard');
-    Route::get('/',[DashboardController::class,'index'])->name('dashboard')->middleware('admin_auth');;
-    Route::resource('slider',SliderController::class)->middleware('admin_auth');;
-    Route::resource('user', UserController::class)->middleware('admin_auth');;
-    Route::resource('role', RoleController::class)->middleware('admin_auth');;
-    Route::resource('permission', PermissionController::class)->middleware('admin_auth');;
+    Route::get('/register', [RegisterController::class,'show'])->name('register.show');
+    Route::post('/register', [RegisterController::class,'register'])->name('register.store');
+    //reset pass
+    Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+    Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+    Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+     //
+    Route::get('/',[DashboardController::class,'index'])->name('dashboard')->middleware('admin_auth');
+    Route::resource('slider',SliderController::class)->middleware('admin_auth');
+    Route::resource('user', UserController::class)->middleware('admin_auth');
+    Route::resource('role', RoleController::class)->middleware('admin_auth');
+    Route::resource('permission', PermissionController::class)->middleware('admin_auth');
 
 });
 //frontend route
@@ -56,8 +64,8 @@ Route::get('/poducts', [FrontendController::class, 'productList'])->name('produc
 
 //
 //Route::get('product-list', [ProductController::class, 'productList'])->name('products.list');
-Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
-Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
-Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
-Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
-Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
+// Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+// Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
+// Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
+// Route::post('remove', [CartController::class, 'removeCart'])->name('cart.remove');
+// Route::post('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');

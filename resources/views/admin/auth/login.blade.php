@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in</title>
+  <title>Mango-Byte | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{asset('#')}}"><b>Admin</b>LTE</a>
+    <a href="{{asset('#')}}"><b>Mango</b>Byte</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -78,10 +78,10 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="#">I forgot my password</a>
+        <a href="{{ route('forget.password.get') }}">I forgot my password</a>
       </p>
       <p class="mb-0">
-        <a href="{{ route('register') }}" class="text-center">Register</a>
+        <a href="{{ route('register.show') }}" class="text-center">Register</a>
       </p>
     </div>
     <!-- /.login-card-body -->

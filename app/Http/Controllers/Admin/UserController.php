@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -12,9 +13,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $user = User::orderBy('id','DESC')->get();
+        return view('admin.pages.user.index',compact('user'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
+
     }
 
     /**
