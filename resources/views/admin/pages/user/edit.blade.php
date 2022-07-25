@@ -1,5 +1,5 @@
 @extends('admin.layout.adminLayout')
-@section('title','edit role')
+@section('title','edit user')
 @section('style')
 
 @endsection
@@ -15,8 +15,8 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">role</a></li>
-                            <li class="breadcrumb-item active">role edit</li>
+                            <li class="breadcrumb-item"><a href="#">user</a></li>
+                            <li class="breadcrumb-item active">user edit</li>
                         </ol>
                     </div>
                 </div>
@@ -30,15 +30,15 @@
                     <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="text-left mb-3">
-                            <a href="{{route('role.index')}}" type="submit" class="btn btn-success">All role</a>
+                            <a href="{{route('user.index')}}" type="submit" class="btn btn-success">All user</a>
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">role</h3>
+                                <h3 class="card-title">user</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="POST" action="{{ route('role.update',$role->id) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('user.update',$user->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
@@ -46,26 +46,28 @@
                                         <label>Permission</label>
                                         <div class="select2-purple">
                                             <select class="select2" multiple="multiple" data-placeholder="Select Permission"
-                                                name="permissions[]" data-dropdown-css-class="select2-purple"
+                                                name=" roles[]" data-dropdown-css-class="select2-purple"
                                                 style="width: 100%;">
-                                                @foreach ($permissions as $id => $permissions)
-                                                    <option value="{{ $id }}"
-                                                        {{ in_array($id, old('permissions', [])) || (isset($role) && $role->permissions->contains($id)) ? 'selected' : '' }}>
-                                                        {{ $permissions }}</option>
-                                                @endforeach
+                                                   @foreach($roles as $id => $roles)
+                                                      <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>{{ $roles }}</option>
+                                                    @endforeach
+
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="title">Name</label>
-                                        <input type="text" class="form-control" name="name" value="{{$role->name }}" id="name" placeholder="Enter Title">
+                                        <input type="text" class="form-control" name="name" value="{{$user->name }}" id="name" placeholder="Enter Title">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="title">Slug</label>
-                                        <input type="text" class="form-control" name="slug" value="{{$role->slug }}" id="slug" placeholder="Enter slug">
+                                        <label for="title">Name</label>
+                                        <input type="text" class="form-control" name="email" value="{{$user->email }}" id="slug" placeholder="Enter slug">
                                     </div>
-
+                                    <div class="form-group">
+                                        <label for="title">Password</label>
+                                        <input type="text" class="form-control" name="password" value="{{$user->password }}" id="slug" placeholder="Enter slug">
+                                    </div>
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">Check me out</label>

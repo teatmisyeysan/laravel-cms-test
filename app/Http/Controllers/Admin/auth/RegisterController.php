@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Crypt;
 
 class RegisterController extends Controller
 {
-
     /**
      * Display register page.
      *
@@ -21,7 +20,6 @@ class RegisterController extends Controller
     {
         return view('admin.auth.register');
     }
-
     /**
      * Handle account registration request
      *
@@ -31,16 +29,12 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        // $user = User::create($request->validated());
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            // 'start_date' => $request->start_date
         ]);
-
         // auth()->login($user);
-
         return redirect()->back()->with('message', "Account successfully registered.");
     }
 }

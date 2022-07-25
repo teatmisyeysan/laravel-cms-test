@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Borom | @yield('title')</title>
+  <title>Mango-Byte | @yield('title')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -97,7 +97,7 @@
         </button>
     </form>
       <!-- Messages Dropdown Menu -->
-      {{-- <li class="nav-item dropdown">
+      <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
@@ -190,7 +190,7 @@
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
-      </li> --}}
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->

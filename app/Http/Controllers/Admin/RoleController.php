@@ -29,7 +29,6 @@ class RoleController extends Controller
     {
         $permissions = Permission::all()->pluck('name', 'id');
         return view('admin.pages.role.create',compact('permissions'));
-
     }
 
     /**
@@ -40,13 +39,11 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-
         $role = new Role();
-
         $role->name = $request->name;
         $role->slug = $request->slug;
         $role->save();
-        // $role->permissions()->attach($request->input('permissions', []));
+        $role->permissions()->attach($request->input('permissions', []));
         $role->refresh();
 
         return redirect()->route('role.index')->with('message','Role has been created successfully');
@@ -61,7 +58,6 @@ class RoleController extends Controller
     public function show($id)
     {
         $role = Role::where('id',$id)->first();
-
         return view('admin.pages.role.show',['role'=> $role]);
     }
 
@@ -75,7 +71,6 @@ class RoleController extends Controller
     {
         $permissions = Permission::all()->pluck('name', 'id');
         $role = Role::find($id);
-
         return view('admin.pages.role.edit',['role' => $role,'permissions'=>$permissions]);
     }
 
@@ -92,7 +87,7 @@ class RoleController extends Controller
         $role->name = $request->name;
         $role->slug = $request->slug;
         $role->update();
-        // $role->permissions()->sync($request->input('permissions', []));
+        $role->permissions()->sync($request->input('permissions', []));
         return redirect()->route('role.index')->with('message','Roles updated successfully');
     }
 

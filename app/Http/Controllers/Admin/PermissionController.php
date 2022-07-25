@@ -19,7 +19,6 @@ class PermissionController extends Controller
     public function index()
     {
         $permission = Permission::orderBy('id','desc')->get();
-
         return view('admin.pages.permission.index',compact('permission'));
     }
 
@@ -41,9 +40,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-
         $permission = new Permission();
-
         $permission->name = $request->name;
         $permission->slug = $request->slug;
         $permission->save();

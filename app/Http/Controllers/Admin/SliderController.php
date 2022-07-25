@@ -16,10 +16,7 @@ class SliderController extends Controller
      */
     public function index()
     {
-        // $this->authorize('view', Slider::class);
-
         $slider = Slider::orderBy('id', 'desc')->get();
-
          return view('admin.pages.slider.index', [
         'slider' => $slider]);
     }
@@ -31,8 +28,6 @@ class SliderController extends Controller
      */
     public function create()
     {
-        // $this->authorize('create', Slider::class);
-
         $Sliders = Slider::orderBy('id', 'desc')->get();
         return view('admin.pages.slider.create',['Sliders' => $Sliders]);
     }
@@ -53,14 +48,12 @@ class SliderController extends Controller
         // image
         if($request->hasfile('thumbnail'))
         {
-
             $file = $request->file('thumbnail');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
             $file->move('storage/slider/', $filename);
             $Slider->thumbnail = $filename;
         }
-
         $Slider->save();
         return redirect()->route('slider.index')->with('message','Slider Added Successfully');
     }
@@ -74,7 +67,6 @@ class SliderController extends Controller
     public function show($id)
     {
         $slider = Slider::where('id',$id)->first();
-
         return view('admin.pages.slider.show',['slider' => $slider]);
     }
 
