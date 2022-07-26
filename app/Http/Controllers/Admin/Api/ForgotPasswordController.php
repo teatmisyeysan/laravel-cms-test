@@ -12,9 +12,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class PasswordResetRequestController extends Controller
+class ForgotPasswordController extends Controller
 {
-    public function sendEmail(Request $request)
+    public function forgotPassword(Request $request)
     {
         if (!$this->validateEmail($request->email)) {
             return $this->failedResponse();

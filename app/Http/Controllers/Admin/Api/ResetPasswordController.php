@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
-class ChangePasswordController extends Controller
+class ResetPasswordController extends Controller
 {
-    public function passwordResetProcess(UpdatePasswordRequest $request)
+    public function passwordReset(UpdatePasswordRequest $request)
     {
         return $this->updatePasswordRow($request)->count() > 0 ? $this->resetPassword($request) : $this->tokenNotFoundError();
     }
@@ -45,7 +45,7 @@ class ChangePasswordController extends Controller
 
           // reset password response
           return response()->json([
-            'data'=>'Password has been updated.'
+            'data'=>'Password has been updated successfully.'
           ],Response::HTTP_CREATED);
       }
 }
