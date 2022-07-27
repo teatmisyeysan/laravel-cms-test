@@ -1,5 +1,5 @@
 @extends('admin.layout.adminLayout')
-@section('title','role Show')
+@section('title', 'role Show')
 @section('style')
 
 @endsection
@@ -22,18 +22,14 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        {{-- <div class="text-left mb-3">
-                            <a href="{{route('role.create')}}" type="submit" class="btn btn-outline-success"><i class="fas fa-plus mr-1"></i>Create New</a>
-                        </div> --}}
                         <div class="card">
                             <!--Alert message-->
-                            @if(session('message'))
+                            @if (session('message'))
                                 <div class="alert alert-success mb-sm-5 mt-sm-5">
                                     {{ session('message') }}
                                 </div>
@@ -62,7 +58,7 @@
                                                 Permission
                                             </th>
                                             <td>
-                                                @foreach($role->permissions as $id => $roles)
+                                                @foreach ($role->permissions as $id => $roles)
                                                     <span class="badge badge-info">{{ $roles->slug }}</span>
                                                 @endforeach
                                             </td>
@@ -93,9 +89,11 @@
 @endsection
 @section('scripts')
     <script>
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
                 "buttons": ["print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({

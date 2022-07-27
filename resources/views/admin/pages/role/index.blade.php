@@ -1,8 +1,8 @@
 @extends('admin.layout.adminLayout')
-@section('title','role')
+@section('title', 'role')
 @section('style')
     <!-- Select2 -->
-    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 @endsection
 @section('content')
@@ -23,27 +23,26 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <div class="text-left mb-3">
-                            <a href="{{route('role.create')}}" type="submit" class="btn btn-outline-success"><i class="fas fa-plus mr-1"></i>Create New</a>
+                            <a href="{{ route('role.create') }}" type="submit" class="btn btn-outline-success"><i
+                                    class="fas fa-plus mr-1"></i>Create New</a>
                         </div>
-                        @if(session('message'))
-                        <div class="alert alert-success mb-sm-5 mt-sm-5">
-                            {{ session('message') }}
-                        </div>
+                        @if (session('message'))
+                            <div class="alert alert-success mb-sm-5 mt-sm-5">
+                                {{ session('message') }}
+                            </div>
                         @endif
-                        @if(session('delete'))
-                        <div class="alert alert-danger mb-sm-5 mt-sm-5">
-                            {{ session('delete') }}
-                        </div>
-                     @endif
+                        @if (session('delete'))
+                            <div class="alert alert-danger mb-sm-5 mt-sm-5">
+                                {{ session('delete') }}
+                            </div>
+                        @endif
                         <div class="card">
-
                             <div class="card-header">
                                 <h3 class="card-title">DataTable</h3>
                             </div>
@@ -51,44 +50,42 @@
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Name</th>
-                                        <th>Role</th>
-                                        <th>Slug</th>
-                                        {{-- <th>Created at</th>
-                                        <th>Updated at</th> --}}
-                                        <th>Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Role</th>
+                                            <th>Slug</th>
+                                            <th>Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($role as $rl)
-                                        <tr>
-                                            <td>{{ $rl->id }}</td>
-                                            <td>{{ $rl->name }}</td>
-                                            <td>
-                                                @foreach($rl->permissions as $key => $item)
-                                                    <span class="badge badge-info ">{{ $item->name }}</span>
-                                                @endforeach
-                                            </td>
-                                            <td>{{ $rl->slug }}</td>
-                                            {{-- <td>{{ $rl->created_at }}</td>
-                                            <td>{{ $rl->updated_at }}</td> --}}
-                                            <td>
-                                                <form action="{{ route('role.destroy',$rl->id) }}" method="Post">
-                                                    <a class="btn btn-outline-success" href="{{ route('role.edit',$rl->id) }}"><i class="fas fa-edit"></i></a>
-                                                    <a class="btn btn-outline-info" href="{{ route('role.show',$rl->id) }}"><i class="fas fa-eye"></i></a>
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
-                                                </form>
-
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                        @foreach ($role as $rl)
+                                            <tr>
+                                                <td>{{ $rl->id }}</td>
+                                                <td>{{ $rl->name }}</td>
+                                                <td>
+                                                    @foreach ($rl->permissions as $key => $item)
+                                                        <span class="badge badge-info ">{{ $item->name }}</span>
+                                                    @endforeach
+                                                </td>
+                                                <td>{{ $rl->slug }}</td>
+                                                <td>
+                                                    <form action="{{ route('role.destroy', $rl->id) }}" method="Post">
+                                                        <a class="btn btn-outline-success"
+                                                            href="{{ route('role.edit', $rl->id) }}"><i
+                                                                class="fas fa-edit"></i></a>
+                                                        <a class="btn btn-outline-info"
+                                                            href="{{ route('role.show', $rl->id) }}"><i
+                                                                class="fas fa-eye"></i></a>
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-outline-danger"><i
+                                                                class="fas fa-trash"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
-                                    <tfoot>
-                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -106,9 +103,11 @@
 @endsection
 @section('scripts')
     <script>
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
                 "buttons": ["print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
@@ -123,5 +122,5 @@
         });
     </script>
     <!-- Select2 -->
-<script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
+    <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 @endsection

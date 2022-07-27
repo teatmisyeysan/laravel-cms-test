@@ -1,5 +1,5 @@
 @extends('admin.layout.adminLayout')
-@section('title','slider')
+@section('title', 'slider')
 @section('style')
 
 @endsection
@@ -28,14 +28,15 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="text-left mb-3">
-                            <a href="{{route('slider.create')}}" type="submit" class="btn btn-outline-success"><i class="fas fa-plus mr-1"></i>Create New</a>
+                            <a href="{{ route('slider.create') }}" type="submit" class="btn btn-outline-success"><i
+                                    class="fas fa-plus mr-1"></i>Create New</a>
                         </div>
-                         <!--Alert message-->
-                         @if(session('message'))
-                         <div class="alert alert-success mb-sm-5 mt-sm-5">
-                             {{ session('message') }}
-                         </div>
-                         @endif
+                        <!--Alert message-->
+                        @if (session('message'))
+                            <div class="alert alert-success mb-sm-5 mt-sm-5">
+                                {{ session('message') }}
+                            </div>
+                        @endif
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">DataTable</h3>
@@ -44,40 +45,45 @@
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Title</th>
-                                        <th>Sub Title</th>
-                                        <th>Description</th>
-                                        <th>Thumbnail</th>
-                                        <th>Link</th>
-                                        <th>Action</th>
-                                    </tr>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Title</th>
+                                            <th>Sub Title</th>
+                                            <th>Description</th>
+                                            <th>Thumbnail</th>
+                                            <th>Link</th>
+                                            <th>Action</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($slider as $sl)
-                                        <tr>
-                                            <td>{{ $sl->id }}</td>
-                                            <td>{{ $sl->title }}</td>
-                                            <td>{{ $sl->subtitle }}</td>
-                                            <td>{{ \Str::limit($sl->description, 100) }}</td>
-                                            <td>
-                                                <img src="{{ asset('storage/slider/' . $sl->thumbnail) }}" width="50"
-                                                     height="40">
-                                            </td>
-                                            <td>{{ $sl->link }}</td>
-                                            <td>
-                                                <form action="{{ route('slider.destroy',$sl->id) }}" method="Post">
-                                                    <a class="btn btn-outline-success" href="{{ route('slider.edit',$sl->id) }}"><i class="fas fa-edit"></i></a>
-                                                    <a class="btn btn-outline-info" href="{{ route('slider.show',$sl->id) }}"><i class="fas fa-eye"></i></a>
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
-                                                </form>
+                                        @foreach ($slider as $sl)
+                                            <tr>
+                                                <td>{{ $sl->id }}</td>
+                                                <td>{{ $sl->title }}</td>
+                                                <td>{{ $sl->subtitle }}</td>
+                                                <td>{{ \Str::limit($sl->description, 100) }}</td>
+                                                <td>
+                                                    <img src="{{ asset('storage/slider/' . $sl->thumbnail) }}"
+                                                        width="50" height="40">
+                                                </td>
+                                                <td>{{ $sl->link }}</td>
+                                                <td>
+                                                    <form action="{{ route('slider.destroy', $sl->id) }}" method="Post">
+                                                        <a class="btn btn-outline-success"
+                                                            href="{{ route('slider.edit', $sl->id) }}"><i
+                                                                class="fas fa-edit"></i></a>
+                                                        <a class="btn btn-outline-info"
+                                                            href="{{ route('slider.show', $sl->id) }}"><i
+                                                                class="fas fa-eye"></i></a>
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-outline-danger"><i
+                                                                class="fas fa-trash"></i></button>
+                                                    </form>
 
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                     </tfoot>
@@ -98,9 +104,11 @@
 @endsection
 @section('scripts')
     <script>
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
                 "buttons": ["print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({

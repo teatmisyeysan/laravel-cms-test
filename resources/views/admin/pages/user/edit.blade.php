@@ -1,5 +1,5 @@
 @extends('admin.layout.adminLayout')
-@section('title','edit user')
+@section('title', 'edit user')
 @section('style')
 
 @endsection
@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="text-left mb-3">
-                            <a href="{{route('user.index')}}" type="submit" class="btn btn-success">All user</a>
+                            <a href="{{ route('user.index') }}" type="submit" class="btn btn-success">All user</a>
                         </div>
                         <div class="card">
                             <div class="card-header">
@@ -38,7 +38,8 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="POST" action="{{ route('user.update',$user->id) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('user.update', $user->id) }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
@@ -48,25 +49,30 @@
                                             <select class="select2" multiple="multiple" data-placeholder="Select Permission"
                                                 name=" roles[]" data-dropdown-css-class="select2-purple"
                                                 style="width: 100%;">
-                                                   @foreach($roles as $id => $roles)
-                                                      <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>{{ $roles }}</option>
-                                                    @endforeach
+                                                @foreach ($roles as $id => $roles)
+                                                    <option value="{{ $id }}"
+                                                        {{ in_array($id, old('roles', [])) || (isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>
+                                                        {{ $roles }}</option>
+                                                @endforeach
 
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="title">Name</label>
-                                        <input type="text" class="form-control" name="name" value="{{$user->name }}" id="name" placeholder="Enter Title">
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ $user->name }}" id="name" placeholder="Enter Title">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="title">Name</label>
-                                        <input type="text" class="form-control" name="email" value="{{$user->email }}" id="slug" placeholder="Enter slug">
+                                        <input type="text" class="form-control" name="email"
+                                            value="{{ $user->email }}" id="slug" placeholder="Enter slug">
                                     </div>
                                     <div class="form-group">
                                         <label for="title">Password</label>
-                                        <input type="text" class="form-control" name="password" value="{{$user->password }}" id="slug" placeholder="Enter slug">
+                                        <input type="text" class="form-control" name="password"
+                                            value="{{ $user->password }}" id="slug" placeholder="Enter slug">
                                     </div>
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -76,7 +82,8 @@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer text-right">
-                                    <button class="btn btn-success"><i class="fas fa-save mr-1" aria-hidden="true"></i>Update</button>
+                                    <button class="btn btn-success"><i class="fas fa-save mr-1"
+                                            aria-hidden="true"></i>Update</button>
                                 </div>
                             </form>
                         </div>
@@ -92,9 +99,11 @@
 @endsection
 @section('scripts')
     <script>
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({

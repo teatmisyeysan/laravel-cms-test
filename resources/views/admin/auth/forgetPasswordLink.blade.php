@@ -21,7 +21,7 @@
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Mango </b>Byte</a>
+                <a href="#" class="h1"><b>Mango </b>Byte</a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
@@ -30,13 +30,10 @@
                         {{ session('message') }}
                     </div>
                 @endif
-
                 <form action="{{ route('reset.password.post') }}" method="POST">
                     @csrf
                     <input type="hidden" name="token" value="{{ $token }}">
                     <div class="input-group mb-3">
-                        {{-- <label for="email" class="col-md-12 col-form-label text-md-end">{{ __('Email Address') }}</label> --}}
-
                         <div class="col-md-12">
                             <input id="email" type="hidden"
                                 class="form-control @error('email') is-invalid @enderror" name="email"
@@ -48,16 +45,13 @@
                             @enderror
                         </div>
                     </div>
-
                     <div class="input-group mb-3">
                         <label for="password"
                             class="col-md-12 col-form-label text-md-end">{{ __('New Password') }}</label>
-
                         <div class="col-md-12">
                             <input id="password" type="password"
                                 class="form-control @error('password') is-invalid @enderror" name="password" required
                                 autocomplete="new-password">
-
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -65,7 +59,6 @@
                             @enderror
                         </div>
                     </div>
-
                     <div class="input-group mb-3">
                         <label for="password-confirm"
                             class="col-md-12 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
@@ -87,13 +80,10 @@
             <!-- /.login-card-body -->
         </div>
     </div>
-    <!-- /.login-box -->
-
-    <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
+    <!-- Admin App -->
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 </body>
 

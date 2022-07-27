@@ -19,18 +19,6 @@
                     </ul>
                 </div>
                 <!-- End of .col-sm-3 -->
-
-                {{-- <div class="col-sm-3 col-md-3 col-lg-3">
-                    <ul>
-                        <li>
-                            <h3>Quick Links</h3>
-                        </li>
-                        <li><a href="#">Partners</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">FAQ’s</a></li>
-                        <li><a href="#">Badges</a></li>
-                    </ul>
-                </div> --}}
                 <!-- End of .col-sm-3 -->
 
                 <div class="col-sm-4 col-md-4 col-lg-4">

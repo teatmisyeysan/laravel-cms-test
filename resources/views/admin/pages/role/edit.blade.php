@@ -1,5 +1,5 @@
 @extends('admin.layout.adminLayout')
-@section('title','edit role')
+@section('title', 'edit role')
 @section('style')
 
 @endsection
@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="text-left mb-3">
-                            <a href="{{route('role.index')}}" type="submit" class="btn btn-success">All role</a>
+                            <a href="{{ route('role.index') }}" type="submit" class="btn btn-success">All role</a>
                         </div>
                         <div class="card">
                             <div class="card-header">
@@ -38,7 +38,8 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="POST" action="{{ route('role.update',$role->id) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('role.update', $role->id) }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="card-body">
@@ -58,12 +59,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="title">Name</label>
-                                        <input type="text" class="form-control" name="name" value="{{$role->name }}" id="name" placeholder="Enter Title">
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ $role->name }}" id="name" placeholder="Enter Title">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="title">Slug</label>
-                                        <input type="text" class="form-control" name="slug" value="{{$role->slug }}" id="slug" placeholder="Enter slug">
+                                        <input type="text" class="form-control" name="slug"
+                                            value="{{ $role->slug }}" id="slug" placeholder="Enter slug">
                                     </div>
 
                                     <div class="form-check">
@@ -74,7 +77,8 @@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer text-right">
-                                    <button class="btn btn-success"><i class="fas fa-save mr-1" aria-hidden="true"></i>Update</button>
+                                    <button class="btn btn-success"><i class="fas fa-save mr-1"
+                                            aria-hidden="true"></i>Update</button>
                                 </div>
                             </form>
                         </div>
@@ -90,9 +94,11 @@
 @endsection
 @section('scripts')
     <script>
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({

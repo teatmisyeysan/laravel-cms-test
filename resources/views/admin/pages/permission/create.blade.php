@@ -1,8 +1,7 @@
 @extends('admin.layout.adminLayout')
-@section('title','Create permission')
+@section('title', 'Create permission')
 @section('style')
-    {{-- selec2 cdn --}}
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+ <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -31,7 +30,8 @@
                     <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="text-left mb-3">
-                            <a href="{{route('permission.index')}}" type="submit" class="btn btn-outline-warning">All permission</a>
+                            <a href="{{ route('permission.index') }}" type="submit" class="btn btn-outline-warning">All
+                                permission</a>
                         </div>
                         <div class="card">
                             <div class="card-header">
@@ -44,12 +44,14 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="title">Name</label>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+                                        <input type="text" class="form-control" name="name" id="name"
+                                            placeholder="Enter name">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="title">Slug</label>
-                                        <input type="text" class="form-control" name="slug" id="slug" placeholder="Enter slug">
+                                        <input type="text" class="form-control" name="slug" id="slug"
+                                            placeholder="Enter slug">
                                     </div>
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -59,7 +61,8 @@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer text-right">
-                                    <button type="submit" class="btn btn-success"><i class="fas fa-save mr-1" aria-hidden="true"></i>Save</button>
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-save mr-1"
+                                            aria-hidden="true"></i>Save</button>
                                 </div>
                             </form>
                         </div>
@@ -74,11 +77,13 @@
     </div>
 @endsection
 @section('scripts')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
@@ -92,12 +97,12 @@
             });
         });
         $(document).ready(function() {
-        // Select2 Multiple
-        $('.select2-multiple').select2({
-            placeholder: "Select",
-            allowClear: true
-        });
+            // Select2 Multiple
+            $('.select2-multiple').select2({
+                placeholder: "Select",
+                allowClear: true
+            });
 
-    });
+        });
     </script>
 @endsection

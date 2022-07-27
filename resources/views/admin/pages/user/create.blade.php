@@ -47,9 +47,11 @@
                                             <select class="select2" multiple="multiple" data-placeholder="Select Permission"
                                                 name=" roles[]" data-dropdown-css-class="select2-purple"
                                                 style="width: 100%;">
-                                                   @foreach($roles as $id => $roles)
-                                                      <option value="{{ $id }}" {{ (in_array($id, old('roles', [])) || isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>{{ $roles }}</option>
-                                                    @endforeach
+                                                @foreach ($roles as $id => $roles)
+                                                    <option value="{{ $id }}"
+                                                        {{ in_array($id, old('roles', [])) || (isset($user) && $user->roles->contains($id)) ? 'selected' : '' }}>
+                                                        {{ $roles }}</option>
+                                                @endforeach
 
                                             </select>
                                         </div>

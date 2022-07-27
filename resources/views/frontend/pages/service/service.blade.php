@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in"
-                     data-aos-delay="200">
+                    data-aos-delay="200">
                     <a href="https://www.youtube.com/watch?v=GlrxcuEDyF8" class="glightbox play-btn"></a>
                 </div>
 
@@ -38,10 +38,12 @@
                 <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
                     <h3>What Do We Offer For You?</h3>
                     <p class="fst-italic">
-                        Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+                        Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat
+                        ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
                     </p>
                     <p>
-                        Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+                        Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat
+                        ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
                     </p>
                     <ul>
                         <li><i class="bi bi-check-circle"></i>Quality Products</li>
@@ -49,18 +51,15 @@
                         <li><i class="bi bi-check-circle"></i>Online Order</li>
                         <li><i class="bi bi-check-circle"></i> Home Delivery</li>
                     </ul>
-
                 </div>
-
             </div>
-
         </div>
     </section><!-- End About Section -->
     <!-- Product Start -->
     <div class="container-xxl-p py-6" id="bg-product-overlay">
         <div class="container" data-aos="fade-up">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-aos="zoom-in" data-aos-delay="100"
-                 style="max-width: 500px;">
+                style="max-width: 500px;">
                 {{-- <p class="text-primary text-uppercase mb-2">// Bakery Products</p> --}}
                 <h1 class="display-6 mb-4">We Bake Every Item From The Core Of Our Hearts</h1>
             </div>
@@ -119,12 +118,11 @@
         </div>
     </div>
     <!-- Product End -->
-
     <!-- Product Start -->
     <div class="container-xxl-p py-6" id="bg-product-overlay">
         <div class="container" data-aos="fade-up">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-aos="zoom-in" data-aos-delay="100"
-                 style="max-width: 500px;">
+                style="max-width: 500px;">
                 {{-- <p class="text-primary text-uppercase mb-2">// Bakery Products</p> --}}
                 <h1 class="display-6 mb-4">We Bake Every Item From The Core Of Our Hearts</h1>
             </div>
@@ -186,7 +184,7 @@
 @endsection
 <style>
     /*** Product ***/
-    #main .container-xxl-p.py-6{
+    #main .container-xxl-p.py-6 {
         background-size: cover;
         padding: 6% 6%;
         position: relative;
@@ -202,6 +200,7 @@
         left: 0;
         right: 0;
     }
+
     #main .container-xxl-p.py-6 .product-item {
         transition: .5s;
         background-color: #1A1819 !important;

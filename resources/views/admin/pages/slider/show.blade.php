@@ -1,5 +1,5 @@
 @extends('admin.layout.adminLayout')
-@section('title','Slider Show')
+@section('title', 'Slider Show')
 @section('style')
 
 @endsection
@@ -28,12 +28,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        {{-- <div class="text-left mb-3">
-                            <a href="{{route('slider.create')}}" type="submit" class="btn btn-outline-success"><i class="fas fa-plus mr-1"></i>Create New</a>
-                        </div> --}}
                         <div class="card">
                             <!--Alert message-->
-                            @if(session('message'))
+                            @if (session('message'))
                                 <div class="alert alert-success mb-sm-5 mt-sm-5">
                                     {{ session('message') }}
                                 </div>
@@ -68,8 +65,8 @@
                                         <tr>
                                             <th>Thumbnail</th>
                                             <td>
-                                                <img src="{{ asset('storage/slider/' . $slider->thumbnail) }}" width="350"
-                                                     height="240">
+                                                <img src="{{ asset('storage/slider/' . $slider->thumbnail) }}"
+                                                    width="350" height="240">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -90,9 +87,11 @@
 @endsection
 @section('scripts')
     <script>
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
                 "buttons": ["print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
