@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMailreset extends Mailable
+class ResetPassword extends Mailable
 {
     use Queueable, SerializesModels;
     public $token;

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
-use App\Mail\SendMailreset;
+use App\Mail\ResetPassword;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +26,7 @@ class ForgotPasswordController extends Controller
     public function send($email)
     {
         $token = $this->createToken($email);
-        Mail::to($email)->send(new SendMailreset($token, $email));
+        Mail::to($email)->send(new ResetPassword($token, $email));
     }
 
     public function createToken($email)

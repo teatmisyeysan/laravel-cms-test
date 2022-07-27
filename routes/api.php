@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Api\AuthController;
 use App\Http\Controllers\Admin\Api\ForgotPasswordController;
 use App\Http\Controllers\Admin\Api\ResetPasswordController;
+use App\Http\Controllers\Admin\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,8 @@ Route::group(['middleware'=>'api','prefix'=>'auth'],function($router){
    Route::post('/logout',[AuthController::class,'logout'])->name('logout');
    Route::post('/forgot-password',[ForgotPasswordController::class,'forgotPassword']);
    Route::post('/reset-password', [ResetPasswordController::class,'passwordReset']);
+
+   //get user
+
+   Route::get('/user', [UserController::class,'index']);
 });
