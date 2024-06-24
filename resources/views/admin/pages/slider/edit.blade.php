@@ -1,5 +1,5 @@
 @extends('admin.layout.adminLayout')
-@section('title','Create slider')
+@section('title', 'edit slider')
 @section('style')
 
 @endsection
@@ -29,39 +29,46 @@
                     <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="text-left mb-3">
-                            <a href="{{route('slider.index')}}" type="submit" class="btn btn-success">All Slider</a>
+                            <a href="{{ route('slider.index') }}" type="submit" class="btn btn-outline-success">All
+                                Slider</a>
                         </div>
-                        <div class="card card-success">
+                        <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Slider</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="POST" action="{{ route('slider.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('slider.update', $slider->id) }}"
+                                enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="title">Title</label>
-                                        <input type="text" class="form-control" name="title" value="{{$slider->title }}" id="title" placeholder="Enter Title">
+                                        <input type="text" class="form-control" name="title"
+                                            value="{{ $slider->title }}" id="title" placeholder="Enter Title">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="title">Title</label>
-                                        <input type="text" class="form-control" name="subtitle" value="{{$slider->subtitle }}" id="subtitle" placeholder="Enter subtitle">
+                                        <input type="text" class="form-control" name="subtitle"
+                                            value="{{ $slider->subtitle }}" id="subtitle" placeholder="Enter subtitle">
                                     </div>
                                     <div class="form-group">
                                         <label for="title">Description</label>
-                                        <textarea class="form-control" name="description" id="description">{{$slider->description }}</textarea>
+                                        <textarea class="form-control" name="description" id="description">{{ $slider->description }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="title">Link</label>
-                                        <input type="text" class="form-control" name="link" value="{{$slider->link }}" id="link" placeholder="Enter link">
+                                        <input type="text" class="form-control" name="link"
+                                            value="{{ $slider->link }}" id="link" placeholder="Enter link">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputFile">Thumbnail</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" name="thumbnail" value="{{$slider->thumbnail }}" class="custom-file-input" id="exampleInputFile">
+                                                <input type="file" name="thumbnail" value="{{ $slider->thumbnail }}"
+                                                    class="custom-file-input" id="exampleInputFile">
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
@@ -69,7 +76,8 @@
                                             </div>
 
                                         </div>
-                                        <img class="mt-3" src="{{ asset('storage/slider/' .$slider->thumbnail) }}" width="100" height="60" />
+                                        <img class="mt-3" src="{{ asset('storage/slider/' . $slider->thumbnail) }}"
+                                            width="100" height="60" />
                                     </div>
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -79,7 +87,8 @@
                                 <!-- /.card-body -->
 
                                 <div class="card-footer text-right">
-                                    <button type="submit" class="btn btn-success"><i class="fas fa-save mr-1" aria-hidden="true"></i>Update</button>
+                                    <button class="btn btn-success"><i class="fas fa-save mr-1"
+                                            aria-hidden="true"></i>Update</button>
                                 </div>
                             </form>
                         </div>
@@ -95,9 +104,11 @@
 @endsection
 @section('scripts')
     <script>
-        $(function () {
+        $(function() {
             $("#example1").DataTable({
-                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({

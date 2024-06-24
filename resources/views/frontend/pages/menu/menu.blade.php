@@ -1,5 +1,5 @@
 @extends('frontend.layout.frontendCoffeeLayout')
-@section('title','Menu')
+@section('title', 'Menu')
 @section('style')
 
 @endsection
@@ -7,12 +7,10 @@
     <!-- ======= Menu Section ======= -->
     <section id="menu" class="menu section-bg">
         <div class="container" data-aos="fade-up">
-
             <div class="section-title">
                 <h2>Menu</h2>
                 <p>Check Our Tasty Menu</p>
             </div>
-
             <div class="row" data-aos="fade-up" data-aos-delay="100">
                 <div class="col-lg-12 d-flex justify-content-center">
                     <ul id="menu-flters">
@@ -26,7 +24,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
                 {{-- noodle --}}
                 <div class="col-lg-6 menu-item filter-noodle">
@@ -38,7 +35,6 @@
                         Lorem, deren, trataro, filede, nerada
                     </div>
                 </div>
-
                 <div class="col-lg-6 menu-item filter-food">
                     <img src="assets/img/menu/borom/duck.jpg" class="menu-img" alt="">
                     <div class="menu-content">
@@ -57,7 +53,6 @@
                         Lorem, deren, trataro, filede, nerada
                     </div>
                 </div>
-
                 <div class="col-lg-6 menu-item filter-coffee">
                     <img src="assets/img/menu/borom/hot-capuchino.jpg" class="menu-img" alt="">
                     <div class="menu-content">
@@ -67,7 +62,6 @@
                         Lorem, deren, trataro, filede, nerada
                     </div>
                 </div>
-
                 <div class="col-lg-6 menu-item filter-starters">
                     <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
                     <div class="menu-content">
@@ -77,7 +71,6 @@
                         Lorem, deren, trataro, filede, nerada
                     </div>
                 </div>
-
                 <div class="col-lg-6 menu-item filter-specialty">
                     <img src="assets/img/menu/bread-barrel.jpg" class="menu-img" alt="">
                     <div class="menu-content">
@@ -87,7 +80,6 @@
                         Lorem, deren, trataro, filede, nerada
                     </div>
                 </div>
-
                 <div class="col-lg-6 menu-item filter-starters">
                     <img src="assets/img/menu/cake.jpg" class="menu-img" alt="">
                     <div class="menu-content">
@@ -171,30 +163,37 @@
                 <p>Book a Table</p>
             </div>
 
-            <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form"
+                data-aos="fade-up" data-aos-delay="100">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <input type="text" name="name" class="form-control" id="name"
+                            placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                         <div class="validate"></div>
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                        <input type="email" class="form-control" name="email" id="email"
+                            placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
                         <div class="validate"></div>
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <input type="text" class="form-control" name="phone" id="phone"
+                            placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                         <div class="validate"></div>
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
-                        <input type="text" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <input type="text" name="date" class="form-control" id="date" placeholder="Date"
+                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                         <div class="validate"></div>
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
-                        <input type="text" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <input type="text" class="form-control" name="time" id="time" placeholder="Time"
+                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                         <div class="validate"></div>
                     </div>
                     <div class="col-lg-4 col-md-6 form-group mt-3">
-                        <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+                        <input type="number" class="form-control" name="people" id="people"
+                            placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
                         <div class="validate"></div>
                     </div>
                 </div>
@@ -205,11 +204,11 @@
                 <div class="mb-3">
                     <div class="loading">Loading</div>
                     <div class="error-message"></div>
-                    <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+                    <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm
+                        your reservation. Thank you!</div>
                 </div>
                 <div class="text-left"><button type="submit">Book a Table</button></div>
             </form>
-
         </div>
     </section><!-- End Book A Table Section -->
 @endsection

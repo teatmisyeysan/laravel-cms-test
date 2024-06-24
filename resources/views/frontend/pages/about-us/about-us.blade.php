@@ -134,10 +134,10 @@
 
     #main .container-xxl.py-6 .bx {
         font-size: 4.1rem;
-        color:#cda45e !important;
+        color: #cda45e !important;
     }
+
     /*#main .container-xxl.py-6:hover .bx {*/
     /*    color:#fff !important;*/
     /*}*/
-
 </style>
